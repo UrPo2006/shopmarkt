@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
     hostname: 'ecommerce.routemisr.com',
     port: '',
     pathname: '/Route-Academy-*/*',
-     
+    
    }]
     
   },

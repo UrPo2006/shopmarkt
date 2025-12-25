@@ -30,7 +30,7 @@ export default function AddToCard({productId}:{productId:string}) {
  if(session.status =='authenticated'){
    setIsLoading (true);
  const data = await addToCartAction(productId)
-data.statu! =='success'&& toast.success('Product added to cart successfully')
+data.status! =='success'&& toast.success('Product added to cart successfully')
 
 setCartData(data);
     console.log(data);
