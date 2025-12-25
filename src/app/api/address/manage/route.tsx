@@ -1,17 +1,19 @@
-// app/api/addresses/manage/route.ts
+
 import { NextRequest, NextResponse } from "next/server";
 import { getDecodedToken } from "../../helpers/auth";
 
 export async function POST(req: NextRequest) {
   try {
     const decoded = await getDecodedToken();
+    if (!decoded?.token) return NextResponse.json({ status: "error", message: "Unauthorized" }, { status: 401 });
+
     const body = await req.json();
 
     const res = await fetch("https://ecommerce.routemisr.com/api/v1/addresses", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        token: decoded?.token as string,
+        token: decoded.token,
       },
       body: JSON.stringify(body),
     });
@@ -19,8 +21,8 @@ export async function POST(req: NextRequest) {
     const data = await res.json();
     return NextResponse.json(data);
   } catch (err) {
-        if(err instanceof Error){ return NextResponse.json({ status: "error", message: err.message }, { status: 500 });}
-   
+    console.error("POST /api/address/manage:", err);
+    return NextResponse.json({ status: "error", message: "Internal server error" }, { status: 500 });
   }
 }
 
