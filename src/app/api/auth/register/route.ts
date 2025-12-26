@@ -30,9 +30,12 @@ export async function POST(req: Request) {
   
     return NextResponse.json<SignUpResponse>(data, { status: 201 });
   } catch (error) {
-    return NextResponse.json(
+   if(error instanceof Error){
+     return NextResponse.json(
       { message: "Internal Server Error" },
       { status: 500 }
     );
+   }
+    
   }
 }
