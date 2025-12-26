@@ -39,7 +39,7 @@ providers: [
   
 ],
 callbacks:{
-  jwt:({token,user})=>{//شفرت الtoken
+  jwt:({token,user})=>{
    if(user){
      token.user = user.user;
     token.token = user.token;
@@ -48,6 +48,7 @@ callbacks:{
   },
   session:({session,token})=>{
    session.user = token.user 
+ 
     return session 
 
   }
