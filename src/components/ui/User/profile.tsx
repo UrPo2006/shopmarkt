@@ -25,7 +25,7 @@ const [passwordData, setPasswordData] = useState({
   password: "",
   rePassword: "",
 });
-  //const TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MmQ5YmJiODRkOTUwYzkwMjNjMmE4MiIsIm5hbWUiOiJyYWhtYSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzY0NzkxMDUwLCJleHAiOjE3NzI1NjcwNTB9.VDRIs3-0U1enst2-nl3sWtq8Xrz6KEhiPy3bOrrOj_g'
+  
   /* ================= IMAGE ================= */
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -90,7 +90,7 @@ const [passwordData, setPasswordData] = useState({
   /* ============================================*/
 
 const handleChangePassword = async (e: React.FormEvent) => {
-  e.preventDefault(); // ⛔ يمنع reload
+  e.preventDefault(); 
 
   if (passwordData.password !== passwordData.rePassword) {
     toast.error("Passwords do not match");
@@ -110,7 +110,7 @@ const handleChangePassword = async (e: React.FormEvent) => {
     if (data?.message === "success") {
       toast.success("Password changed successfully");
 
-      // 🔐 logout إجباري
+      
       setTimeout(() => {
         signOut({ callbackUrl: "/login" });
       }, 1500);
@@ -204,43 +204,7 @@ const handleChangePassword = async (e: React.FormEvent) => {
       Save & Login Again
     </Button>
   </form>
-)}
-
-      {/* {isEditing && (
-        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="space-y-2">
-            <label className="text-sm">Name</label>
-            <Input
-              value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            />
-          </div>
-
-          <div className="space-y-2">
-            <label className="text-sm">Email</label>
-            <Input
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            />
-          </div>
-
-          <div className="space-y-2">
-            <label className="text-sm">Phone</label>
-            <Input
-              value={formData.phone}
-              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-            />
-          </div>
-
-          <div className="col-span-full">
-            <Button type="submit" disabled={loading}>
-              {loading ? "Saving..." : "Save Changes"}
-            </Button>
-          </div>
-        </form>
-
-      )} */}
-      
+)}      
       {/* Update Profile Form */}
    {isEditing && (   <form onSubmit={handleSubmit} className="space-y-4">
         <Input value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} placeholder="Name" />
