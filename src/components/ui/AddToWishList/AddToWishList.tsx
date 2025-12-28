@@ -50,10 +50,8 @@ export default function AddToWishList({ productId }: { productId: string }) {
   return (
     <>
       {!isLiked ? (
-        isLoading ? <Loader className="ml-4 animate-spin" /> : <Heart className='ml-4 cursor-pointer' onClick={addProductToWishList} />
-      ) : (
-        isLoading ? <Loader className="ml-4 animate-spin" /> : <FaHeart className="text-red-700 cursor-pointer" onClick={deleteProductToWishList} />
-      )}
+        isLoading ? <Loader className="ml-4 animate-spin" /> : <Heart className='w-7 h-7 ml-4 cursor-pointer' onClick={addProductToWishList} />
+      ) : ( isLoading ? <Loader className="ml-4 animate-spin" /> : <Heart className="w-7 h-7  ml-4   text-red-500 fill-red-500 cursor-pointer" onClick={deleteProductToWishList}/>)}
     </>
   )
 }

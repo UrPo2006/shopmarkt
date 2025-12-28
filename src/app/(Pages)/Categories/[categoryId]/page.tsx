@@ -12,6 +12,7 @@ import AddToCard from '@/components/ui/AddToCard/AddToCard';
 // import { Product } from "@/interfaces";
 import Rating from "@/components/ui/ratings/page";
 import { ProductI } from "@/interfaces";
+import AddToWishList from "@/components/ui/AddToWishList/AddToWishList";
 
 interface Props {
   params: { categoryId: string }
@@ -20,8 +21,8 @@ interface Props {
 export default async function CategoryProducts({ params }: Props) {
   const { categoryId } = await params;
 
-  // حماية لو categoryId غير موجود
-  if (!categoryId) {
+
+  if (!categoryId) {  // حماية لو categoryId غير موجود
     return <p className="text-center mt-30 text-gray-500">🥲🥲💔💔</p>;
   }
 
@@ -34,25 +35,30 @@ export default async function CategoryProducts({ params }: Props) {
       { cache: "no-store" }
     );
     const json = await res.json();
-    products = json?.data ?? []; // تأكد من أن data موجودة
+    products = json?.data ?? [];
   } catch (error) {
     console.error("Error fetching products:", error);
     products = [];
   }
 
   if (products.length === 0) {
-    return <p className="text-center mt-10 text-gray-500">لا توجد منتجات لهذه الفئة</p>;
+    return <div className='flex  flex-col  min-h-[75vh] items-center justify-center  '>
+           <h2 className="mt-40 text-center text-3xl py-6 ">No products found for this Category... 🥲</h2>
+       </div>
   }
 
   return (
     <div className='grid grid-cols-1 mt-23 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
       {products.map((product) => (
-        <div key={product._id} className='flex justify-center'>
+        <div key={product._id} className='relative flex justify-center'>
+          
           <Card className="shadow-2xl w-full overflow-hidden h-auto">
-
-            {/* الانتقال إلى صفحة المنتج عند الضغط */}
+ <div className="  end-3 top-3  absolute  ">
+                  <AddToWishList  productId={product._id} />
+            </div>
             <Link href={'/products/' + product._id}>
               <CardHeader>
+                
                 <Image
                   className='w-full'
                   src={product.imageCover}
@@ -70,9 +76,7 @@ export default async function CategoryProducts({ params }: Props) {
               <CardContent>
                 <div className='flex gap-3 mt-3 items-center'>
                   <Rating rating={product.ratingsAverage} />
-                  <p className="text-slate-800 text-sm font-bold dark:text-white">
-                    ({product.ratingsAverage})
-                  </p>
+               
                 </div>
 
                 <div className='flex gap-1 mt-2'>

@@ -15,6 +15,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import AddToCard from '@/components/ui/AddToCard/AddToCard';
 import Rating from '@/components/ui/ratings/page';
+import AddToWishList from '@/components/ui/AddToWishList/AddToWishList';
 
 
 
@@ -29,10 +30,14 @@ export default async function Products() {
   return (<>
     <div className='grid grid-cols-1 mt-23 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 '>
        {product.map((product) => <div key={product._id} className='flex justify-center '>
-     
-      <Card className=" shadow-2xl w-4/4  overflow-hidden h-auto" >
+      
+      <Card className=" relative  shadow-2xl w-4/4  overflow-hidden h-auto" >
+       <div className="   end-3  top-3  absolute  ">
+        <AddToWishList  productId={product._id} />
+  </div>
+
         <Link href={'/products/'+product._id} >
-  <CardHeader>
+  <CardHeader className=" mt-6">
     <Image className='w-full'  src={product.imageCover} alt={product.title} height={200} width={200}  />
    <CardDescription>{product.brand.name}</CardDescription>
     <CardTitle>{product.category.name}</CardTitle>
@@ -43,9 +48,7 @@ export default async function Products() {
  
        <div className='flex  gap-3 mt-3 items-center'>
         <Rating rating={product.ratingsAverage }/>
-         {/* <p className="text-slate-800 text-sm font-bold dark:text-white">
-        {product.ratingsAverage}
-        </p>  */}
+        
       </div>
 
         <div className='flex gap-1 mt-2 '>

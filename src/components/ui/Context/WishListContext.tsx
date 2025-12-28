@@ -25,9 +25,7 @@ export default function WishListProvider({ children }: { children: ReactNode }) 
   const getWishList = useCallback(async () => {
     setIsLoading(true);
     try {
-      // const res = await fetch("https://ecommerce.routemisr.com/api/v1/wishlist", {
-      //   headers: { token }
-      // });
+    
         const res = await fetch("/api/wishlist/get");
        const data: WishListResponse = await res?.json();
     
