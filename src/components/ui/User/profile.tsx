@@ -7,8 +7,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import { signOut } from "next-auth/react";
+
 export default function Profile() {
-    const { data: session, status, update } = useSession();
+const { data: session,  update } = useSession();
+
+
+
 console.log(session)
   const [avatar, setAvatar] = useState<string | null>(null);
   const [isEditing, setIsEditing] = useState(false);
@@ -25,6 +29,7 @@ const [passwordData, setPasswordData] = useState({
   password: "",
   rePassword: "",
 });
+
   
   /* ================= IMAGE ================= */
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,7 +62,7 @@ const [passwordData, setPasswordData] = useState({
       setFormData({
         name: session.user.name,
         email: session.user.email,
-        phone: (session.user as any).phone || "",
+        phone: (session.user as any).phone|| "",
       });
     }
   }, [session]);

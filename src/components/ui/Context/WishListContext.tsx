@@ -21,7 +21,6 @@ export default function WishListProvider({ children }: { children: ReactNode }) 
   const [wishList, setWishList] = useState<WishListResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
- // const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MmQ5YmJiODRkOTUwYzkwMjNjMmE4MiIsIm5hbWUiOiJyYWhtYSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzY0NzkxMDUwLCJleHAiOjE3NzI1NjcwNTB9.VDRIs3-0U1enst2-nl3sWtq8Xrz6KEhiPy3bOrrOj_g";
 
   const getWishList = useCallback(async () => {
     setIsLoading(true);

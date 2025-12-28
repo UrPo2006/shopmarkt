@@ -25,7 +25,7 @@ export default async function Products() {
   });
   const{data:product}:{data:ProductI[]}= await res?.json()
 
-  // console.log(product);
+  console.log(product);
   return (<>
     <div className='grid grid-cols-1 mt-23 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 '>
        {product.map((product) => <div key={product._id} className='flex justify-center '>
