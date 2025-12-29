@@ -69,19 +69,19 @@ const { wishList } = useContext(WishListContext);
     font-semibold
   ">
             <NavigationMenuItem>
-              <NavigationMenuLink asChild className="text-lg">
+              <NavigationMenuLink asChild >
                 <Link href="/products">Products</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
 
             <NavigationMenuItem>
-              <NavigationMenuLink asChild className="text-lg">
+              <NavigationMenuLink asChild >
                 <Link href="/Brands">Brands</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
 
             <NavigationMenuItem>
-              <NavigationMenuLink asChild className="text-lg">
+              <NavigationMenuLink asChild >
                 <Link href="/Categories">Categories</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
