@@ -80,146 +80,232 @@ const [showRePassword, setShowRePassword] = useState(false);
   }
 
   return (
-    <div className="relative w-[1030px] h-[600px] mx-auto mt-24 rounded-xl overflow-hidden bg-black shadow-xl border border-cyan-400/30">
-      <form onSubmit={form.handleSubmit(onSubmit)} className="flex w-full h-full text-white">
-        {/* Form Left Side */}
-        <div className="w-1/2 mt-7 p-6 flex flex-col justify-center gap-6">
-          <h2 className="text-4xl font-bold text-white text-center">Register</h2>
 
-          <Form {...form}>
-            {/* Username */}
-            <FormField
-              control={form.control}
-              name="username"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Username</FormLabel>
-                  <FormControl>
-                    <Input {...field} placeholder="Enter username" className="p-3 bg-gray-900 border border-teal-500/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+<div className="pt-30 "><div
+  className="
+    relative
+    w-full
+    max-w-[1030px]
+    min-h-[600px]
+    mx-auto
+     
+    rounded-xl
+    overflow-hidden
+    bg-black
+    shadow-xl
+    border border-cyan-400/30
+    
+  "
+>
+  <form
+    onSubmit={form.handleSubmit(onSubmit)}
+    className="flex flex-col md:flex-row w-full h-full text-white"
+  >
+    {/* ================= Form Section ================= */}
+    <div
+      className="
+        w-full
+        md:w-[40%]
+        p-6
+        flex
+        flex-col
+        justify-center
+        gap-6
+      "
+    >
+      <h2 className="text-3xl md:text-4xl font-bold text-center">
+        Register
+      </h2>
 
-            {/* Email */}
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <Input {...field} placeholder="Enter email" className="p-3 bg-gray-900 border border-teal-500/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+      <Form {...form}>
+        {/* Username */}
+        <FormField
+          control={form.control}
+          name="username"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Username</FormLabel>
+              <FormControl>
+                <Input
+                  {...field}
+                  placeholder="Enter username"
+                  className="p-3 bg-gray-900 border border-teal-500/50 rounded-lg focus:ring-2 focus:ring-teal-500"
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-            {/* Password */}
-           <FormField
-  control={form.control}
-  name="password"
-  render={({ field }) => (
-    <FormItem>
-      <FormLabel>Password</FormLabel>
-      <FormControl>
-        <div className="relative">
-          <Input
-            type={showPassword ? "text" : "password"}
-            {...field}
-            placeholder="Enter password"
-            className="p-3 bg-gray-900 border border-teal-500/50 rounded-lg pr-10"
-          />
-          <button
-            type="button"
-               onClick={() => setShowPassword((prev) => !prev)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
-          >
-            {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-          </button>
-        </div>
-      </FormControl>
-      <FormMessage />
-    </FormItem>
-  )}
-/>
+        {/* Email */}
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input
+                  {...field}
+                  placeholder="Enter email"
+                  className="p-3 bg-gray-900 border border-teal-500/50 rounded-lg focus:ring-2 focus:ring-teal-500"
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-          
+        {/* Password */}
+        <FormField
+          control={form.control}
+          name="password"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Password</FormLabel>
+              <FormControl>
+                <div className="relative">
+                  <Input
+                    type={showPassword ? "text" : "password"}
+                    {...field}
+                    placeholder="Enter password"
+                    className="p-3 bg-gray-900 border border-teal-500/50 rounded-lg pr-10"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword((prev) => !prev)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
+                  >
+                    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                  </button>
+                </div>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-            {/* RePassword */}
-      <FormField
-  control={form.control}
-  name="rePassword"
-  render={({ field }) => (
-    <FormItem>
-      <FormLabel>Confirm Password</FormLabel>
-      <FormControl>
-        <div className="relative">
-          <Input
-            type={showRePassword ?  "text":"password" }
-            {...field}
-            placeholder="Confirm password"
-            className="p-3 bg-gray-900 border border-teal-500/50 rounded-lg pr-10"
-          />
-          <button
-            type="button"
-              onClick={() => setShowRePassword((prev) => !prev)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
-          >
-              {showRePassword ? <EyeOff size={20} /> : <Eye size={20} />}
-          </button>
-        </div>
-      </FormControl>
-      <FormMessage />
-    </FormItem>
-  )}
-/>
+        {/* Confirm Password */}
+        <FormField
+          control={form.control}
+          name="rePassword"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Confirm Password</FormLabel>
+              <FormControl>
+                <div className="relative">
+                  <Input
+                    type={showRePassword ? "text" : "password"}
+                    {...field}
+                    placeholder="Confirm password"
+                    className="p-3 bg-gray-900 border border-teal-500/50 rounded-lg pr-10"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowRePassword((prev) => !prev)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
+                  >
+                    {showRePassword ? (
+                      <EyeOff size={20} />
+                    ) : (
+                      <Eye size={20} />
+                    )}
+                  </button>
+                </div>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-            {/* Phone */}
-            <FormField
-              control={form.control}
-              name="phone"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Phone</FormLabel>
-                  <FormControl>
-                    <Input {...field} placeholder="01012345678" className="p-3 bg-gray-900 border border-teal-500/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+        {/* Phone */}
+        <FormField
+          control={form.control}
+          name="phone"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Phone</FormLabel>
+              <FormControl>
+                <Input
+                  {...field}
+                  placeholder="01012345678"
+                  className="p-3 bg-gray-900 border border-teal-500/50 rounded-lg focus:ring-2 focus:ring-teal-500"
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-            <Button
-              type="submit"
-              // disabled={!form.formState.isValid || loading}
-              className="py-3 bg-gradient-to-b from-teal-900 to-black text-2xl dark:text-white hover:bg-teal-700  shadow-2xs shadow-teal-500 rounded-3xl font-semibold cursor-pointer"
-            >
-              {loading ? <Loader className="animate-spin" /> : "Register"}
-            </Button>
-              <p className="mb-15 text-sm text-center text-gray-500"> Already have an account?{' '} <Link href="/login" className=" cursor-pointer   bg-gradient-to-r from-teal-400 via-teal-300 to-white
-             bg-clip-text text-transparent "> Login </Link> </p>
-                </Form>      
-               <Link href="/ForgoTPassword" className="   
-             bg-gradient-to-r from-teal-400 via-teal-300 to-white
-             bg-clip-text text-transparent  
-              font-semibold   cursor-pointer    absolute bottom-2 left-50  "> Forgot Password ? </Link>   
-        </div>
-   
-       
-        <div
-          className="absolute top-0 end-0 h-full w-[60%] bg-gradient-to-tl from-teal-700 to-black rounded-l-xl border shadow-[0_0_25px_#00e5ff] flex items-center justify-center text-white text-center text-5xl font-bold"
-          style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 40% 100%)" }}
+        <Button
+          type="submit"
+          className="
+            py-3
+            bg-gradient-to-b
+            from-teal-900
+            to-black
+            text-lg md:text-2xl
+            hover:from-teal-700
+            rounded-3xl
+            font-semibold
+            shadow-teal-500
+            dark:text-white
+          "
         >
-          <h3 className="text-4xl font-extrabold text-center">
-            WELCOME
-            <br />
-            NEW USER!
-          </h3>
-        </div>
-      </form>
+          {loading ? <Loader className="animate-spin" /> : "Register"}
+        </Button>
+
+        <p className="text-sm text-center text-gray-500 pb-3">
+          Already have an account?{" "}
+          <Link
+            href="/login"
+            className="
+              bg-gradient-to-r
+              from-teal-400
+              via-teal-300
+              to-white
+              bg-clip-text
+              text-transparent
+              font-semibold
+            "
+          >
+            Login
+          </Link>
+        </p>
+       
+      </Form>
     </div>
+
+    {/* ================= Welcome Section ================= */}
+    <div
+      className="
+        hidden md:flex
+        md:w-[60%]
+        bg-gradient-to-tl
+        from-teal-700
+        to-black
+        rounded-l-xl
+        shadow-[0_0_25px_#00e5ff]
+        items-center
+        justify-center
+        text-center
+      "
+      style={{
+        clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 40% 100%)",
+      }}
+    >
+      <h3 className="text-3xl lg:text-4xl font-extrabold">
+        <span className="bg-gradient-to-r from-black via-teal-300 to-white bg-clip-text text-transparent">
+          Welcome
+        </span>
+        <br />
+        <span className="bg-gradient-to-r from-black via-teal-300 to-white bg-clip-text text-transparent">
+          NEW USER!
+        </span>
+      </h3>
+    </div>
+  </form>
+</div></div>
+
   );
 }
