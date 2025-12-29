@@ -55,7 +55,7 @@ const { wishList } = useContext(WishListContext);
     items-between
     
     absolute
-    end-100
+    end-90
     w-200
     gap-6
   "
